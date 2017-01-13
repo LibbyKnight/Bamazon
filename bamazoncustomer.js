@@ -90,12 +90,19 @@ function placeOrder (item, quantity) {
 	}); 
 		if (quantity >= res.StockQuantity) {
 			console.log("The total for your order is " + total);
+			updateQuantity();
 }
 
 		else {
 			console.log("Insuficient quantity! Please select another item to buy");
 			itemList();
 		}
+	}
+
+	function updateQuantity () {
+		connection.query('UPDATE products SET ? WHERE ?', {StockQuantity: res.StockQuantity - answer.quantity}, {itemID: item}),
+                        
+
 	}
 
 itemList();
