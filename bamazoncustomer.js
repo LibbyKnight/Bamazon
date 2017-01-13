@@ -82,11 +82,20 @@ function itemQuantity () {
 });		   
 };
 
-function placeOrder (answers) {
+function placeOrder (item, quantity) {
+
+	var total = quantity * res.StockQuantity;
 
 	connection.query('SELECT * FROM products WHERE ItemID = ?', {itemID: item}, function (err, res) {
 	}); 
-	console.log(res);
+		if (quantity >= res.StockQuantity) {
+			console.log("The total for your order is " + total);
 }
+
+		else {
+			console.log("Insuficient quantity! Please select another item to buy");
+			itemList();
+		}
+	}
 
 itemList();
