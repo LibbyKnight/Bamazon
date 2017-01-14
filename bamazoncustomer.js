@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
   	console.log('connected');
-  	
+  	itemList();
 });
 
 function itemList() {
@@ -35,10 +35,10 @@ function itemList() {
             
         })
        console.log(columns);
-		choosingItem();
+		
    		}
     })
-
+choosingItem();
 };
 
 
@@ -99,10 +99,7 @@ function placeOrder (item, quantity) {
 		}
 	}
 
-	function updateQuantity () {
-		connection.query('UPDATE products SET ? WHERE ?', {StockQuantity: res.StockQuantity - answer.quantity}, {itemID: item}),
-                        
-
-	}
-
-itemList();
+	// function updateQuantity () {
+	// 	connection.query('UPDATE products SET ? WHERE ?', {StockQuantity: res.StockQuantity - answer.quantity}, {itemID: item}),
+                       
+	// }
